@@ -74,11 +74,12 @@ WSGI_APPLICATION = 'TesteFidelityPesquisas.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-CSRF_TRUSTED_ORIGINS = [
-    'http://127.0.0.1:8000',
-    'http://localhost:8000',
-]
+#CSRF_TRUSTED_ORIGINS = [
+ #   'http://127.0.0.1:8000',
+  #  'http://localhost:8000',
+#]
 
+#CORRIGIR ERRO DE LOGOUT (MULTIPLE OBJECTS RETURNIN)
 
 DATABASES = {
     'default': {

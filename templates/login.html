@@ -1,7 +1,134 @@
-<form method="POST">
-    {% csrf_token %}
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Senha" required>
-    <button type="submit">Entrar</button>
-</form>
-<a href="{% url 'register' %}">Criar uma conta</a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+    background-color: #1abc9c;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.messages {
+    list-style: none;
+    padding: 0;
+}
+
+.messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.messages .error {
+    background-color: #ffb3b3;
+    color: #900;
+}
+
+.messages .success {
+    background-color: #b3ffb3;
+    color: #090;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #f9f9f9;
+}
+
+.icon {
+    padding: 10px;
+}
+
+input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    background-color: transparent;
+}
+
+button {
+    background-color: #16a085;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #138d75;
+}
+
+p {
+    margin-top: 10px;
+}
+
+a {
+    color: #16a085;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login Fidelity Pesquisas</h2>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                <span class="icon">📧</span>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <span class="icon">🔒</span>
+                <input type="password" name="password" placeholder="Senha" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+
+        <p>Não tem uma conta? <a href="{% url 'register' %}">Criar uma conta</a></p>
+    </div>
+</body>
+</html>

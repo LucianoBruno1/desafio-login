@@ -1,6 +1,51 @@
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Cadastrar</button>
-</form>
-<a href="{% url 'login' %}">Já tem conta? Faça login</a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <style>
+        .error { color: red; }
+        .messages { list-style: none; padding: 0; }
+        .messages li { color: red; }
+    </style>
+</head>
+<body>
+    <h2>Registro</h2>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="password">Senha:</label>
+        <input type="password" name="password" id="password" required>
+        <button type="button" onclick="togglePassword('password')">👁️</button>
+
+        <label for="confirm_password">Confirmar Senha:</label>
+        <input type="password" name="confirm_password" id="confirm_password" required>
+        <button type="button" onclick="togglePassword('confirm_password')">👁️</button>
+
+        <button type="submit">Registrar</button>
+        <button type="button" onclick="window.location.href='{% url 'login' %}'">Cancelar</button>
+    </form>
+
+    <script>
+        function togglePassword(fieldId) {
+            var field = document.getElementById(fieldId);
+            field.type = field.type === "password" ? "text" : "password";
+        }
+    </script>
+</body>
+</html>
