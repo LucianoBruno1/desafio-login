@@ -1,45 +1,161 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <style>
-        .error { color: red; }
-        .messages { list-style: none; padding: 0; }
-        .messages li { color: red; }
+        body {
+            background-color: #1abc9c;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .register-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        h2 {
+            background-color: #16a085;
+            color: white;
+            padding: 15px;
+            margin: -20px -20px 20px;
+            border-radius: 10px 10px 0 0;
+            font-size: 20px;
+        }
+
+        .messages {
+            list-style: none;
+            padding: 0;
+        }
+
+        .messages li {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .messages .error {
+            background-color: #ffb3b3;
+            color: #900;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .icon {
+            padding: 10px;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            background-color: transparent;
+        }
+
+        .toggle-password {
+            right: 10px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #16a085;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #138d75;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        p a {
+            color: #16a085;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h2>Registro</h2>
+    <div class="register-container">
+        <h2>Cadastro</h2>
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li class="{{ message.tags }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
-    <form method="post">
-        {% csrf_token %}
-        <label for="name">Nome:</label>
-        <input type="text" name="name" id="name" required>
+        <form method="post">
+            {% csrf_token %}
 
-        <label for="email">E-mail:</label>
-        <input type="email" name="email" id="email" required>
+            <div class="input-group">
+                <span class="icon">👤</span>
+                <input type="text" name="name" placeholder="Nome Completo" required>
+            </div>
 
-        <label for="password">Senha:</label>
-        <input type="password" name="password" id="password" required>
-        <button type="button" onclick="togglePassword('password')">👁️</button>
+            <div class="input-group">
+                <span class="icon">📧</span>
+                <input type="email" name="email" placeholder="E-mail" required>
+            </div>
 
-        <label for="confirm_password">Confirmar Senha:</label>
-        <input type="password" name="confirm_password" id="confirm_password" required>
-        <button type="button" onclick="togglePassword('confirm_password')">👁️</button>
+            <div class="input-group">
+                <span class="icon">🔒</span>
+                <input type="password" name="password" id="password" placeholder="Senha" required>
+                <button type="button" class="toggle-password" onclick="togglePassword('password')">👁️</button>
+            </div>
 
-        <button type="submit">Registrar</button>
-        <button type="button" onclick="window.location.href='{% url 'login' %}'">Cancelar</button>
-    </form>
+            <div class="input-group">
+                <span class="icon">🔒</span>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmar Senha" required>
+                <button type="button" class="toggle-password" onclick="togglePassword('confirm_password')">👁️</button>
+            </div>
+
+            <button type="submit">Cadastrar</button>
+            <p>Já tem uma conta? <a href="{% url 'login' %}">Entre aqui</a></p>
+        </form>
+    </div>
 
     <script>
         function togglePassword(fieldId) {
