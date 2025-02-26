@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e3703c8-2f1a-4223-a2f5-628825a0dcc7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TesteFidelityPesquisas/Procfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TesteFidelityPesquisas/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/TesteFidelityPesquisas/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TesteFidelityPesquisas/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/TesteFidelityPesquisas/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +98,7 @@
       <workItem from="1740256695361" duration="6704000" />
       <workItem from="1740433005219" duration="3731000" />
       <workItem from="1740515731077" duration="2207000" />
-      <workItem from="1740540331958" duration="776000" />
+      <workItem from="1740540331958" duration="1866000" />
     </task>
     <servers />
   </component>
