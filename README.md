@@ -17,7 +17,7 @@ venv\Scripts\activate
 <li>python manage.py makemigrations em seguida python manage.py migrate</li>
 <h3>5. CRIE UM SUPERUSUÁRIO PARA ACESSAR O DJANGO ADMIN (OPCIONAL)</h3>
 <li>python manage.py createsuperuser</li>
-<h3>6. COLETE OS ARQUIVOS ESTÁTICOS/h3>
+<h3>6. COLETE OS ARQUIVOS ESTÁTICOS</h3>
 <li>NO terminal, execute: python manage.py collectstatic</li>
 <h3>7. RODE A APLICAÇÃO</h3>
 <li>No terminal, execute: python manage.py runserver</li>
